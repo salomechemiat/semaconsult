@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="body">
+    <p class="title">Kiosk Management</p>
+    <div class="loading-wrapper" *ngIf="loading">
+      <div class="loading">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+    <div class="card" *ngIf="!loading">
+      <p class="heading">Kiosks</p>
+      <div class="row-title">
+        <p class="id"></p>
+        <p class="name">Kiosk Name</p>
+        <p class="location">Kiosk Location</p>
+        <p class="status">Kiosk Status</p>
+        <p class="date">Last Use</p>
+
+        <!-- <p class="action">Action</p> -->
+      </div>
+      <div class="row" *ngFor="let kiosk of kiosks; let i = index">
+        <p class="id">{{ i+1 }}</p>
+        <p class="name">{{ kiosk.name }}</p>
+        <p class="location">{{ kiosk.location }}</p>
+        <p class="status">{{ kiosk.status }}</p>
+        <p class="date" *ngIf="kiosk.lastUse !== null">{{ kiosk.lastUse | date:'shortDate' }}</p>
+        <p class="date" *ngIf="kiosk.lastUse === null">Not yet used</p>
+        <!-- <p class="action">
+          <button class="action-btn" type="button">DISABLE</button>
+        </p>
+      </div> -->
+    </div>
+  </div>
+</div>

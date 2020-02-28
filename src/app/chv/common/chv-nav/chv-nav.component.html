@@ -1,0 +1,20 @@
+<div class="navbar">
+  <div class="wrapper">
+    <div class="nav-brand">
+      <img src="../../../../assets/sema.png">
+    </div>
+    <p class="heading">Diagnosis Management</p>
+    <div class="nav-list">
+      <div class="nav-item" [routerLink]="[ '/admin/kiosk' ]">
+        <img src="../../../../assets/icons/monitor.svg" />
+        <p class="title">Screenings</p>
+      </div>
+    </div>
+  </div>
+  <div class="nav-list">
+    <div class="nav-item" (click)="Logout()">
+      <img src="../../../../assets/icons/log-out.svg" />
+      <p class="title">Logout</p>
+    </div>
+  </div>
+</div>

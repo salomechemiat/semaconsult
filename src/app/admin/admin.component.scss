@@ -1,0 +1,19 @@
+@import "../../assets/scss/mixins";
+
+.wrapper {
+  height: 100%;
+  display: grid;
+  overflow: hidden;
+  background-color: #f1f2f7;
+  grid-template-columns: 17vw 83vw;
+
+  > app-admin-nav {
+    grid-area: 1/1/2/1;
+  }
+
+  > .main {
+    max-height: 100vh;
+    grid-area: 1/2/2/3;
+    overflow-y: scroll;
+  }
+}

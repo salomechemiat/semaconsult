@@ -1,0 +1,120 @@
+
+<div class="container">
+  <div class="body">
+    <p class="title">Huduma Centers Management</p>
+    <div class="loading-wrapper" *ngIf="loading">
+      <div class="loading">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+    <div class="card" *ngIf="!loading">
+      <p class="heading">location Media</p>
+      <div class="row-title">
+        <p class="id">#</p>
+        <p class="Name2">Name</p>
+        <p class="name">Phone Number</p>
+        <p class="county">Center</p>
+        <p class="status">Status</p>
+        <p class="created">Created On</p>
+        <p class="action">Action</p>
+      </div>
+      <form class="row" [formGroup]="phoneForm" *ngFor="let phone of phones; let i = index">
+        <p class="id">{{ i + 1 }}</p>
+         <p class="realname" *ngIf="editId !== i">salome</p>
+          <input class="realname" type="text" min="10" max="10" formControlName="name" *ngIf="editId === i" />
+        
+
+        <p class="name" *ngIf="editId !== i">{{ phone.phone }}</p>
+        <input class="name" type="text" min="10" max="10" formControlName="phone" *ngIf="editId === i" />
+       
+        <p class="county" *ngIf="editId !== i">{{ phone.location }}</p>
+        <select class="county" formControlName="location" *ngIf="editId === i">
+          <option value="{{item.id}}" *ngFor="let item of locations">{{ item.name }}</option>
+        </select>
+        
+        <p class="status" *ngIf="editId !== i">{{ phone.status }}</p>
+        <select class="status" formControlName="status" *ngIf="editId === i">
+          <option value="{{item.id}}" *ngFor="let item of status">{{ item.name }}</option>
+        </select>
+        <p class="created">{{ phone.createdOn | date: 'shortDate' }}</p>
+        <p class="action">
+          <button class="action-btn" type="button" (click)="EditRow(i)" *ngIf="editId !== i">
+            <img src="../../../../assets/icons/edit.svg" />
+          </button>
+          <button class="action-btn" type="button" (click)="update()" *ngIf="editId === i"> 
+            <img src="../../../../assets/icons/check.svg" />
+          </button>
+          <button class="action-btn" type="button" *ngIf="editId === i">
+            <img src="../../../../assets/icons/x.svg" (click)="EditRow('')" />
+          </button>
+        </p>
+      </form>
+       <button class="open-button" (click)="openForm()">Add Location Media</button>
+       <div id="myForm" class="form-popup">
+      <form [formGroup]="phoneForm"  (ngSubmit)="submit()" class="form-container" >
+        <div class="wrapper">
+          <div class="form-input">
+            <label>Enter Your Name:</label>
+            <input required type="text" formControlName="name" />
+          </div>
+          <div class="invalid-feedback" *ngIf="phoneForm.controls['name'].invalid && (phoneForm.controls['name'].dirty || phoneForm.controls['name'].touched)" class="alert alert-danger">
+            <div  class="invalid-feedback" *ngIf="phoneForm.controls['name'].errors.required">
+            Name is required.
+          </div>
+        </div>
+      </div>
+        <div class="wrapper">
+          <div class="form-input">
+            <label>Enter Phone Number:</label>
+            <input required type="text" formControlName="phone" />
+          </div>
+          <div class="invalid-feedback" *ngIf="phoneForm.controls['phone'].invalid && (phoneForm.controls['phone'].dirty || phoneForm.controls['phone'].touched)" class="alert alert-danger">
+            <div  class="invalid-feedback" *ngIf="phoneForm.controls['phone'].errors.required">
+            Phone Number is required.
+          </div>
+        </div>
+          <div class="form-input">
+            <label>Select Center:</label>
+            <select formControlName="location">
+              <option value="{{item.id}}" *ngFor="let item of locations">{{ item.name }}</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="button">
+          <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+        </div>
+      </form>
+</div>
+<!-- <div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1>Login</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+    <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+
+</script> -->
+    </div>
+  </div>
+</div>

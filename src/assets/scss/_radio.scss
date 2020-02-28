@@ -1,0 +1,50 @@
+$primary-color: #9d9d9d;
+$accent-color: #008eff;
+
+.list__item {
+  position: relative;
+  
+	&:hover > .label {
+    color: $accent-color;
+    
+		&::before {
+			margin-right: 0.625rem;
+			border: 0.35rem solid $accent-color;
+		}
+	}
+}
+
+.radio-btn {
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+	&:checked + .label {
+		color: $accent-color;
+		&::before {
+			background: #ffffff;
+			margin-right: 0.625rem;
+			border: 0.35rem solid $accent-color;
+		}
+	}
+}
+
+.label {
+	display: flex;
+	cursor: pointer;
+	// padding: 0.35rem 0;
+	align-items: center;
+	color: #262626;
+	text-transform: capitalize;
+	transition: all 0.25s linear;
+}
+
+.label::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 0.625rem;
+	transition: all 0.25s linear;
+	border: 0.35rem solid $primary-color;
+}

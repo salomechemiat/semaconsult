@@ -1,0 +1,77 @@
+<div class="navbar">
+  <div class="wrapper">
+    <div class="nav-brand">
+      <img src="assets/sema.png">
+    </div>
+    <!-- Disabled feature -->
+    <!-- <p class="heading">Dashboard</p>
+  <div class="nav-list">
+    <div class="nav-item">
+      <img src="../../../../assets/icons/home.svg" />
+      <p class="title" [routerLink]="[ '/admin' ]">Dashboard</p>
+    </div>
+  </div> -->
+    <p class="heading"><b>Kiosk Management</b></p>
+    <div class="nav-list">
+      <div class="nav-item" [routerLink]="[ '/admin/kiosk' ]">
+        <img src="assets/icons/monitor.svg" />
+        <p class="title"><b>Kiosks</b></p>
+      </div>
+      <div class="nav-item" [routerLink]="[ '/admin/kiosk/questions' ]">
+        <img src="assets/icons/book-open.svg" />
+        <p class="title"><b>Questions</b></p>
+      </div>
+      <!-- Disbaled feature -->
+      <!-- <div class="nav-item">
+      <img src="../../../../assets/icons/archive.svg" />
+      <p class="title" [routerLink]="[ '/admin/kiosk/diseases' ]">Diseases</p>
+    </div> -->
+    </div>
+    <!-- Disbaled feature -->
+    <!-- <p class="heading">Hospitals</p>
+  <div class="nav-list">
+    <div class="nav-item">
+      <img src="../../../../assets/icons/shield.svg" />
+      <p class="title" [routerLink]="[ '/admin/hospitals' ]">Hospitals</p>
+    </div>
+  </div> -->
+    <p class="heading"><b>Centers</b></p>
+    <div class="nav-list">
+      <div class="nav-item" [routerLink]="[ '/admin/centers' ]">
+        <img src="assets/icons/map-pin.svg" />
+        <p class="title"><b>Locations</b></p>
+      </div>
+      <div class="nav-item" [routerLink]="[ '/admin/centers/communication' ]">
+        <img src="assets/icons/phone.svg" />
+        <p class="title"><b>Devices</b></p>
+      </div>
+    </div>
+    <!-- <p class="heading">User Management</p>
+  <div class="nav-list">
+    <div class="nav-item">
+      <img src="../../../../assets/icons/users.svg" />
+      <p class="title" [routerLink]="[ '/admin/users' ]">Users</p>
+    </div>
+  </div> -->
+    <p class="heading"><b>Reports</b></p>
+    <div class="nav-list">
+      <div class="nav-item"  [routerLink]="[ '/admin/reports' ]">
+        <img src="assets/icons/trello.svg" />
+        <p class="title"><b>General</b></p>
+      </div>
+      <!-- <div class="nav-item">
+      <img src="../../../../assets/icons/activity.svg" />
+      <p class="title" [routerLink]="[ '/admin/reports/kiosks' ]">Kiosks</p>
+    </div> -->
+    </div>
+  </div>
+  <div class="nav-list">
+    <div class="nav-item" (click)="Logout()">
+      <img src="assets/icons/log-out.svg" />
+      <p class="title">Logout</p>
+    </div>
+    <div>
+      <p> App Version {{currentApplicationVersion}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<body>
+<div id="form_wrapper">
+   <div id="form_left">
+       <!--  <img src="./assets/download.jpg" alt="sema icon"> -->
+   </div>
+   <form  name ="signInForm" [formGroup]="signInForm" *ngIf="!loading" (ngSubmit)=" signInForm.valid && Submit()" id="form_right">
+       <h1>Sema ATSM Portal</h1>
+          <h2>Please Login to continue</h2>
+          
+   <div class="input_container">
+       <i class="fas fa-envelope"></i>
+       <input required formControlName="email"  placeholder="Email" type="email" name="Email" id="field_email" class='input_field' [ngClass]="{'is-invalid':signInForm.get('email').touched && signInForm.get('email').invalid}">
+     </div>
+       <div *ngIf="signInForm.get('email').touched && signInForm.get('email').invalid"  class="invalid-feedback">
+              <div *ngIf="signInForm.get('email').errors.required">Email field is required</div>
+              <div *ngIf="signInForm.get('email').errors.email">Email must be a valid email Address</div>
+        </div>
+
+
+      
+ 
+
+ <div class="input_container" *ngIf="isVisible === false">
+    <i class="fas fa-lock"></i>
+      <input required  placeholder="Password" type="password" name="Password" id="field_password" class='input_field' formControlName="password" [ngClass]="{'is-invalid':signInForm.get('password').touched && signInForm.get('password').invalid}" >
+     <img class="eye" src="../../../assets/icons/eye-off.svg" value="" (click)="togglePassword()"  />
+     
+
+    
+    </div> 
+     <div *ngIf="signInForm.get('password').touched && signInForm.get('password').invalid"  class="invalid-feedback">
+              <div *ngIf="signInForm.get('password').errors.required">*Password is required</div>
+              <div *ngIf="signInForm.get('password').errors.minlength">*Password  must be a letaset 6 charector</div>
+    </div>       
+
+   <div class="input_container" *ngIf="isVisible === true">
+      <i class="fas fa-lock"></i>
+        <input required placeholder="Password" type="text" name="Password" id="field_password" class='input_field' formControlName="password" [ngClass]="{'is-invalid':signInForm.get('password').touched && signInForm.get('password').invalid}" >
+        <img class="eye" src="../../../assets/icons/eye-off.svg" value="" (click)="togglePassword()"  />
+         
+    </div>
+    
+      <input type="submit" value="Login" id='input_submit' class='input_field'>
+      <span>Forgot <a routerLink="/auth/forgot" routerLinkActive="active"> Username / Password ?</a></span>
+             
+    </form>
+   </div>
+
+</body>

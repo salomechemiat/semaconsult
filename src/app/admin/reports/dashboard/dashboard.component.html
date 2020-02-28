@@ -1,0 +1,153 @@
+    
+<div class="container">
+  <div class="body">
+   <div style="  position: relative;
+  width: 950px;
+  height: 550px;
+  margin-right: 10px;
+  border: 3px ; background-color: #ffffff" class="loading-wrapper" *ngIf="loading">
+      <div class="loading">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+    
+    <div class="generate-report" >
+      <button class="btn" type="button" (click)="toggleGenerateReportModal()">Generate Report</button>
+    </div>
+
+    <div *ngIf="!loading" style=""   class="screening-report" >
+      <div class="heading-wrapper">
+        <p class="heading">Screening Tests vs Presumptive Cases</p>
+        <img src="../../../../assets/icons/refresh-cw.svg" />
+      </div>
+      <canvas baseChart height="150" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+    </div>
+    <div *ngIf="!loading"  class="location-report">
+      <div class="heading-wrapper">
+        <p class="heading">Center Statistics</p>
+        <img src="../../../../assets/icons/refresh-cw.svg" />
+      </div>
+      <div *ngIf="!loading"  class="body-wrapper">
+        <div class="wrapper label">
+          <p class="name">Location Name</p>
+          <p class="stats">Screens</p>
+          <p class="lastUse">Last Used</p>
+        </div>
+        <div class="wrapper" *ngFor="let location of locationsStats">
+          <p class="name">{{ location.name }}</p>
+          <p class="stats">{{ location.tests }}</p>
+          <p class="lastUse" *ngIf="location.tests">{{ location.last_use | date: 'shortDate':'GMT+2' }}</p>
+          <p class="lastUse" *ngIf="!location.tests">Not Used</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!loading"  class="general-report">
+      <div class="heading-wrapper">
+        <p class="heading">General Stats</p>
+        <img src="../../../../assets/icons/refresh-cw.svg" />
+      </div>
+      <div *ngFor="let general of generalReports">
+        <div class="wrapper" *ngIf="!loading">
+          <label>Tests Conducted:</label>
+          <p class="value">{{ general.tests }}</p>
+        </div>
+        <div class="wrapper">
+          <label>Presumptive Cases:</label>
+          <p class="value">{{ general.presumptive }}</p>
+        </div>
+        <div class="wrapper">
+          <label>Presumptive Male Tests:</label>
+          <p class="value">{{ general.male }}</p>
+        </div>
+        <div class="wrapper">
+          <label>Presumptive Female Tests:</label>
+          <p class="value">{{ general.female }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!loading" class="question-report">
+      <div class="heading-wrapper">
+        <p class="heading">Question Statistics</p>
+        <img src="../../../../assets/icons/refresh-cw.svg" />
+      </div>
+      <div class="body-wrapper">
+        <div class="wrapper label">
+          <p class="question">Question</p>
+          <p class="yes">Answered Yes</p>
+          <p class="no">Answered No</p>
+        </div>
+        <div class="wrapper" *ngFor="let item of questionStatistics">
+          <p class="question">{{ item.question }}</p>
+          <p class="yes">{{ item.presumptive }}</p>
+          <p class="no">{{ item.non_presumptive }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!loading"  class="age-report">
+      <div class="heading-wrapper">
+        <p class="heading">Age statistics</p>
+        <img src="../../../../assets/icons/refresh-cw.svg" />
+      </div>
+      <canvas baseChart height="250vh" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [legend]="barChartLegend" [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+  <div class="modal" *ngIf="showModal">
+    <form class="modal-body" [formGroup]="downloadForm">
+      <div class="modal-header">
+        <span class="close-button" (click)="toggleGenerateReportModal()">Close &times;</span>
+      </div>
+      <div class="modal-content">
+        <h2>Generate Report</h2>
+        <div class="wrapper">
+          <h3>Select center:</h3>
+          <select formControlName="location" (change)="GetReportDownloadUrl()" >
+            <option *ngFor="let location of dropdownLocations" value="{{location.id}}" >{{location.name}}</option>
+          </select>
+        </div>
+        <div class="wrapper">
+          <h3>Select time:</h3>
+          <!-- <div class="time-wrapper">
+            <button type="button">1 day</button>
+            <button type="button">7 days</button>
+            <button type="button">2 weeks</button>
+            <button type="button">1 month</button>
+            <button type="button">3 months</button>
+            <button type="button" (click)="toggleCustomTime()">Custom Range</button>
+          </div> -->
+          <div class="time-input-wrapper" *ngIf="isCustomTime">
+            <h5>Specify Time Range:</h5>
+            <div>
+              <label>Minimum Date:</label>
+              <input required [ngClass]="{'is-invalid':generateform.get('firstName').touched && generateform.get('firstName').invalid}"  type="date" formControlName="min" (change)="GetReportDownloadUrl()" />
+            </div>
+            <div>
+              <label>Maximum Date:</label>
+              <input required [ngClass]="{'is-invalid':generateform.get('firstName').touched && generateform.get('firstName').invalid}"  type="date" formControlName="max" (change)="GetReportDownloadUrl()" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" *ngIf="!isReportDisabled">
+        <a type="button"
+          href="{{apiUri}}/reporting/generate?minDate={{selectedMin}}&maxDate={{selectedMax}}&location={{selectedLocation}}"
+          download>Generate</a>
+      </div>
+    </form>
+ 
+  </div>
+</div>
+

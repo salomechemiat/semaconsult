@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="body">
+    <p  class="title"><b>Question Management</b></p>
+    <div class="loading-wrapper" *ngIf="loading">
+      <div class="loading">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+      </div>
+    </div>
+    <div class="card" *ngIf="!loading">
+      <p class="heading"><b>Questions</b></p>
+      <button class="button1" alt="loading"   (click) ="changeState()">Click  for English</button>
+      <button class="button1" alt="loading"   (click) ="EnglishState()">Click  for Swahili</button>
+      <div class="row-title">
+        <p class="id"></p>
+        <p class="question">Question</p>
+        <p class="disease">Disease</p>
+        <p class="language">Language</p>
+        <p class="position">Position</p>
+        <p class="status">Status</p>
+        <p class="date">Date Created</p>
+        <!-- Disbaled feature -->
+        <!-- <p class="action">Action</p> -->
+      </div>
+     
+      <div  *ngFor="let question of questions; 
+                               let i = index
+                               let even = even; 
+                               let odd  = odd "
+                              [ngClass]="{ odd: odd, even: even }"
+                              >
+        <div class="row" *ngIf= "i%2 === 0" >
+        <div class="row" *ngIf= "isAllowed(question.index)">      
+        <p style="color: black; font-size: 15px;" class="id"><b>.</b></p>
+        <p class="question">{{ question.question }}</p>
+        <p class="disease">{{ question.disease }}</p>
+        <p class="language" *ngIf="question.language === 'eng'">English</p>
+        <p class="language" *ngIf="question.language === 'swa'">Kiswahili</p>
+        <p class="position">{{ question.position }}</p>
+        <p class="status">ACTIVE</p>
+        <p class="date">{{ question.createdOn | date:'shortDate' }}</p>
+        
+      </div>
+    </div>
+   </div>
+    <div  *ngFor="let questions of questions; 
+                               let i = index
+                               let even = even; 
+                               let odd  = odd "
+                              [ngClass]="{ odd: odd, even: even }"
+                              >
+        <div class="row" *ngIf= "!(i%2 === 0)" >
+        <div class="row" *ngIf= "English(questions.index)">      
+         <p style="color: black; font-size: 15px;" class="id"><b>.</b></p>
+        <p class="question">{{ questions.question }}</p>
+        <p class="disease">{{ questions.disease }}</p>
+        <p class="language" *ngIf="questions.language === 'eng'">English</p>
+        <p class="language" *ngIf="questions.language === 'swa'">Kiswahili</p>
+        <p class="position">{{ questions.position }}</p>
+        <p class="status">ACTIVE</p>
+        <p class="date">{{ questions.createdOn | date:'shortDate' }}</p>
+        
+      </div>
+    </div>
+   </div>
+  </div>
+</div>

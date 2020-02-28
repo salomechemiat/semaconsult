@@ -1,0 +1,230 @@
+@import "../../../assets/scss/mixins";
+
+
+:root {
+        --body_gradient_left:#7200D0;
+        --body_gradient_right: #C800C1;
+        --form_bg: #ffffff;
+        --input_bg: #E5E5E5;
+        --input_hover:#eaeaea;
+        --submit_bg: #1FCC44;
+        --submit_hover: #40e263;
+        --icon_color:#6b6b6b;
+    }
+  * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        /* make the body full height*/
+        height: 100vh;
+        /* set our custom font */
+        font-family: 'Roboto',
+        sans-serif;
+        /* create a linear gradient*/
+        display:flex;
+        //background-color:#eef6ff;
+       background: url("/assets/bg22.jpg") no-repeat fixed center;
+       background-color: rgba(255,255,255,0.6);
+       
+       background-size: cover;
+
+    }
+.invalid-feedback
+{
+    color:red;
+    float:center;
+    padding-left:20px;
+    margin-top: -12px;
+    border:3px;
+    padding: 1em;
+}
+    #form_wrapper {
+        width: 700px;
+        height: 550px;
+        /* this will help us center it*/
+        margin:auto;
+        background-color: #ffffff;
+        background-color:opacity 0.1;
+        /* make it a grid container*/
+        display: grid;
+        /* with two columns of same width*/
+        grid-template-columns: 1fr 1fr;
+        /* with a small gap in between them*/
+        grid-gap: 5vw;
+        /* add some padding around */
+        padding: 3vh 15px;
+        border-radius:10px;
+    }
+     #form_left {
+        /* center the image */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // background-color: #017af5;
+        background: url("/assets/bg20.jpg") no-repeat center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+         background-color: rgba(255,255,255,0.6);
+         opacity:0.8;
+      // background-blend-mode: lighten;
+        margin-top:-18px;
+        margin-bottom:-19px;
+        margin-left:-15px;
+        resize: both;
+        background-image:fixed;
+        border-radius:5px;
+        width:110%;
+
+         
+    }
+
+    #form_left img {
+
+       
+       
+        
+
+    }
+
+     #form_right {
+        display: grid;
+        /* single column layout */
+        grid-template-columns: 1fr;
+        /* have some gap in between elements*/
+        grid-gap: 10px;
+        padding: 5% 2%;
+        margin-left:-25px;
+
+        
+
+
+
+    }
+     .input_container {
+       // background-color:  #eef6ff;
+        /* vertically align icon and text inside the div*/
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+
+    }
+
+    .input_container:hover {
+       // background-color: #dcebfc;
+    }
+
+    .input_container,
+    #input_submit {
+        height: 50px;
+        /* make the borders more round */
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    .input_field {
+        /* customize the input tag with lighter font and some padding*/
+        color: #6b6b6b;
+        background-color: inherit;
+        width: 90%;
+        border: none;
+        border-bottom: 1px solid #000000;
+        font-size: 1.3rem;
+        font-weight: 400;
+        padding-left: 30px;
+    }
+
+    .input_field:hover,
+    .input_field:focus {
+        /* remove the outline */
+        outline: none;
+    }
+
+    #input_submit {
+        /* submit button has a different color and different padding */
+        background-color:#017af5;
+        padding-left: 0;
+        font-weight: bold;
+
+        color: white;
+        text-transform: uppercase;
+    }
+    .eye
+    {
+     padding-right:2px;
+     padding-top:-2px;
+    }
+
+    #input_submit:hover {
+        background-color: #80cfbb;
+        /* simple color transition on hover */
+        transition: background-color,
+            1s;
+        cursor: pointer;
+    }
+    h1
+    {
+     
+     color: #017af5;
+     font-size:27px;
+     padding: 45px 10px 2px 2px;
+     text-align:center;
+     margin-bottom:-150px;
+     margin-top:-50px;
+     margin-right: 15px;
+    }
+    h1,
+    span {
+        text-align: center;
+       
+
+    }
+
+    h2
+    {
+       font-size:17px;
+       padding: 20px 20px 2px 2px;
+       padding-bottom:2px;
+       text-align:center;
+    }
+
+    /* shift it a bit lower */
+    #create_account {
+        display: block;
+        position: relative;
+        top: 30px;
+    }
+
+    a {
+        /* remove default underline */
+        text-decoration: none;
+        color: #017af5;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color:  #80cfbb;
+    }
+
+    i {
+        color: #6b6b6b;
+    }
+
+
+    @media screen and (max-width:768px) {
+
+        /* make the layout  a single column and add some margin to the wrapper */
+        #form_wrapper {
+            grid-template-columns: 1fr;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        /* on small screen we don't display the image */
+        #form_left {
+            display: none;
+        }
+    }

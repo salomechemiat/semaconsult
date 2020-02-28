@@ -1,0 +1,205 @@
+<div class="container">
+  <div class="body">
+    <div class="presumptive-wrapper">
+      <div class="search-wrapper">
+        <input class="form-input" type="text" placeholder="Search" />
+      </div>
+      <div class="patient-wrapper">
+        <div class="patient">
+          <div class="gender-wrapper">
+            <p class="gender">M</p>
+          </div>
+          <div class="wrapper">
+            <p class="id">KICSEMA0001034</p>
+            <p class="name">Anonymous Person</p>
+          </div>
+        </div>
+        <div class="patient">
+          <div class="gender-wrapper">
+            <p class="gender">M</p>
+          </div>
+          <div class="wrapper">
+            <p class="id">KICSEMA0001034</p>
+            <p class="name">Anonymous Person</p>
+          </div>
+        </div>
+        <div class="patient">
+          <div class="gender-wrapper">
+            <p class="gender">M</p>
+          </div>
+          <div class="wrapper">
+            <p class="id">KICSEMA0001034</p>
+            <p class="name">Anonymous Person</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stepper-wrapper">2</div>
+    <form class="screening-wrapper" [formGroup]="screeningForm" (ngSubmit)="Submit()">
+      <div class="wrapper">
+        <p class="heading">1. Patient Details</p>
+        <div class="input-wrapper">
+          <label>Unique Idetifier (UID)</label>
+          <p>KICSEMA0001034</p>
+        </div>
+        <div class="input-wrapper">
+          <label>Name</label>
+          <input class="form-input" type="text" formControlName="name" />
+        </div>
+        <div class="input-wrapper">
+          <label>Gender</label>
+          <div class="radio-wrapper">
+            <li class="list__item">
+              <input type="radio" class="radio-btn" checked name="gender" id="a-gender-opt" value="m" formControlName="gender" />
+              <label for="a-gender-opt" class="label">Male</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="gender" id="b-gender-opt" value="f" formControlName="gender" />
+              <label for="b-gender-opt" class="label">Female</label>
+            </li>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label>Age</label>
+          <input class="form-input" type="number" min="0" formControlName="age" />
+        </div>
+        <div class="input-wrapper">
+          <label>Phone Number</label>
+          <input class="form-input" type="text" formControlName="phoneNumber" />
+        </div>
+        <div class="input-wrapper">
+          <label>Alternate Phone Number</label>
+          <input class="form-input" type="text" formControlName="alternateNumber" />
+        </div>
+        <div class="input-wrapper">
+          <label>Locations</label>
+          <input class="form-input" type="text" formControlName="locations" />
+        </div>
+      </div>
+      <div class="wrapper">
+        <p class="heading">2. Self-Screening Analysis</p>
+        <div class="input-wrapper">
+          <label>Are you coughing? </label>
+          <div class="radio-wrapper">
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="one" id="a-one-opt" value="1" formControlName="one" />
+              <label for="a-one-opt" class="label">Yes</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="one" id="b-one-opt" value="0" formControlName="one" />
+              <label for="b-one-opt" class="label">No</label>
+            </li>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label>Do you have a fever</label>
+          <div class="radio-wrapper">
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="two" id="a-two-opt" value="1" formControlName="two" />
+              <label for="a-two-opt" class="label">Yes</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="two" id="b-two-opt" value="0" formControlName="two" />
+              <label for="b-two-opt" class="label">No</label>
+            </li>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label>Are you experiencing drenching night sweats?</label>
+          <div class="radio-wrapper">
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="three" id="a-three-opt" value="1" formControlName="three" />
+              <label for="a-three-opt" class="label">Yes</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="three" id="b-three-opt" value="0" formControlName="three" />
+              <label for="b-three-opt" class="label">No</label>
+            </li>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label>Unexplained weight loss/ failure to gain weight in children?</label>
+          <div class="radio-wrapper">
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="four" id="a-opt" value="1" formControlName="four" />
+              <label for="a-four-opt" class="label">Yes</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="four" id="b-opt" value="0" formControlName="four" />
+              <label for="b-four-opt" class="label">No</label>
+            </li>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label>Have you been in contact with a Tuberculosis patient? </label>
+          <div class="radio-wrapper">
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="five" id="a-five-opt" value="1" formControlName="five" />
+              <label for="a-five-opt" class="label">Yes</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="five" id="b-five-opt" value="0" formControlName="five" />
+              <label for="b-five-opt" class="label">No</label>
+            </li>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <p class="heading">3. Diagnosis Details</p>
+        <div class="input-wrapper">
+          <label>Willingness To be referred</label>
+          <div class="radio-wrapper">
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="willingness" id="a-willing-opt" value="1" formControlName="willingness" />
+              <label for="a-willing-opt" class="label">Yes</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="willingness" id="b-willing-opt" value="0" formControlName="willingness" />
+              <label for="b-willing-opt" class="label">No</label>
+            </li>
+            <li class="list__item">
+              <input type="radio" class="radio-btn" name="willingness" id="c-willing-opt" value="-1" formControlName="willingness" />
+              <label for="c-willing-opt" class="label">Not Sure</label>
+            </li>
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label>Referral Type</label>
+          <select class="form-input" formControlName="referalType">
+            <option *ngFor="let option of referralType" value="{{ option.id }}">{{ option.type }}</option>
+          </select>
+        </div>
+        <div class="input-wrapper">
+          <label>Health Facility Option</label>
+          <select class="form-input" formControlName="facility">
+            <option *ngFor="let option of healthFacility" value="{{ option.id }}">{{ option.name }}</option>
+          </select>
+        </div>
+        <div class="input-wrapper">
+          <label>Visit Date</label>
+          <input class="form-input" type="date" formControlName="visitDate" />
+        </div>
+        <div class="input-wrapper">
+          <label>Tests to be run</label>
+          <div class="checkbox-wrapper">
+            <div class="checkbox">
+              <input type="checkbox" id="box-2" formControlName="geneXpert">
+              <label for="box-2">GeneXpert Test </label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="box-3" formControlName="microscopy">
+              <label for="box-3">Microscopy/AFB Test</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="box-4" formControlName="xray">
+              <label for="box-4">X-Ray</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-wrapper">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
